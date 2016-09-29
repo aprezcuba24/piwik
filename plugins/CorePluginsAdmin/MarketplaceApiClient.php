@@ -9,6 +9,7 @@
 namespace Piwik\Plugins\CorePluginsAdmin;
 
 use Piwik\Cache;
+use Piwik\Container\StaticContainer;
 use Piwik\Http;
 use Piwik\Version;
 
@@ -128,12 +129,18 @@ class MarketplaceApiClient
         return PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION . '.' . PHP_RELEASE_VERSION;
     }
 
+    public static function getPiwikVersion()
+    {
+        return StaticContainer::get('marketplacePiwikVersion');
+    }
+
     private function fetch($action, $params)
     {
         $params['php'] = $this->getPhpVersion();
-        $params['piwik'] = Version::VERSION;
         $params['prefer_stable'] = '1';
         ksort($params);
+        $params['piwik'] = self::getPiwikVersion();
+        $params['php'] = PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION . '.' . PHP_RELEASE_VERSION;
         $query = http_build_query($params);
 
         $cacheId = $this->getCacheKey($action, $query);
@@ -188,7 +195,7 @@ class MarketplaceApiClient
         $latestVersion = array_pop($plugin['versions']);
         $downloadUrl = $latestVersion['download'];
 
-        return $this->domain . $downloadUrl . '?coreVersion=' . Version::VERSION;
+        return $this->domain . $downloadUrl . '?coreVersion=' . self::getPiwikVersion();
     }
 
 }
