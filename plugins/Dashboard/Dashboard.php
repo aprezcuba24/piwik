@@ -155,7 +155,7 @@ class Dashboard extends \Piwik\Plugin
                 [
                     {"uniqueId":"widgetVisitsSummarygetEvolutionGraphforceView1viewDataTablegraphEvolution","parameters":{"forceView":"1","viewDataTable":"graphEvolution","module":"VisitsSummary","action":"getEvolutionGraph"}},
                     ' . $advertisingWidget . '
-                    {"uniqueId":"widgetVisitsSummarygetforceView1viewDataTablesparklines","parameters":{"forceView":"1","viewDataTable":"sparklines","module":"VisitsSummary","action":"getSparklines"}}
+                    {"uniqueId":"widgetVisitsSummarygetforceView1viewDataTablesparklines","parameters":{"forceView":"1","viewDataTable":"sparklines","module":"VisitsSummary","action":"get"}}
                 ],
                 [
                     {"uniqueId":"widgetUserCountryMapvisitorMap","parameters":{"module":"UserCountryMap","action":"visitorMap"}},
