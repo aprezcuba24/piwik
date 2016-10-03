@@ -283,6 +283,12 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
+    it('should update the evolution chart if a sparkline is clicked', function (done) {
+        expect.screenshot('goals_overview_updated').to.be.captureSelector('.pageWrap,.dataTable', function (page) {
+            page.click('.sparkline.linked:contains(%)');
+        }, done);
+    });
+
     it('should load the goals > management page correctly', function (done) {
         expect.screenshot('goals_manage').to.be.captureSelector('#content,.top_bar_sites_selector,.entityContainer', function (page) {
             page.load("?" + generalParams + "&module=Goals&action=manage");
