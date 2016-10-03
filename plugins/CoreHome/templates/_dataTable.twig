@@ -16,19 +16,23 @@
               piwik-enriched-headline
         >{{ properties.title }}</h2>
     {% endif %}
+
+    {% if properties.description %}
+        <div class="card-description">{{ properties.description }}</div>
+    {% endif %}
 {% elseif showOnlyTitleWithoutCard %}
     <div>
     <h2>{{ properties.title }}</h2>
+
+    {% if properties.description %}
+        <div class="card-description">{{ properties.description }}</div>
+    {% endif %}
 {% endif %}
 
 {% set showCardTableIsEmpty = not properties.show_as_content_block and isDataTableEmpty and not isWidget %}
 {% if showCardTableIsEmpty %}
     <div class="card">
     <div class="card-content">
-{% endif %}
-
-{% if properties.description %}
-    <div class="card-description">{{ properties.description }}</div>
 {% endif %}
 
 {% set summaryRowId = constant('Piwik\\DataTable::ID_SUMMARY_ROW') %}{# ID_SUMMARY_ROW #}
